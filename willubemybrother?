@@ -1,0 +1,764 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Responsive untuk HP -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Will You Be My Brother? 💗</title>
+
+  <style>
+    /* =====================================================
+       BASIC RESET
+       ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+
+      font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+
+      /* Soft pastel background */
+      background:
+        radial-gradient(circle at 15% 20%, #ffffff 0 3%, transparent 18%),
+        radial-gradient(circle at 85% 80%, #eee8ff 0 3%, transparent 20%),
+        linear-gradient(135deg, #fff3f7, #fffaf2, #f5f0ff);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #685b67;
+      position: relative;
+    }
+
+
+    /* =====================================================
+       FLOATING BACKGROUND DECORATIONS
+       ===================================================== */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .decoration {
+      position: absolute;
+      opacity: 0.6;
+      user-select: none;
+
+      animation: floating 5s ease-in-out infinite;
+    }
+
+    .d1 {
+      top: 12%;
+      left: 10%;
+      font-size: 24px;
+    }
+
+    .d2 {
+      top: 18%;
+      right: 12%;
+      font-size: 18px;
+      animation-delay: 1s;
+    }
+
+    .d3 {
+      bottom: 18%;
+      left: 9%;
+      font-size: 22px;
+      animation-delay: 2s;
+    }
+
+    .d4 {
+      bottom: 12%;
+      right: 13%;
+      font-size: 26px;
+      animation-delay: 0.7s;
+    }
+
+    .d5 {
+      top: 48%;
+      left: 4%;
+      font-size: 14px;
+      animation-delay: 1.5s;
+    }
+
+    .d6 {
+      top: 55%;
+      right: 5%;
+      font-size: 15px;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(5deg);
+      }
+    }
+
+
+    /* =====================================================
+       MAIN CARD
+       ===================================================== */
+
+    .card {
+      position: relative;
+      z-index: 2;
+
+      width: min(90%, 420px);
+
+      padding: 42px 28px 35px;
+
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.88);
+
+      border: 1px solid rgba(239, 182, 202, 0.4);
+      border-radius: 30px;
+
+      box-shadow:
+        0 20px 55px rgba(160, 120, 150, 0.14),
+        0 5px 20px rgba(160, 120, 150, 0.07);
+
+      animation: cardAppear 0.9s ease-out;
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+
+    /* =====================================================
+       CARD CONTENT
+       ===================================================== */
+
+    .top-heart {
+      font-size: 28px;
+      margin-bottom: 15px;
+
+      animation: heartbeat 1.8s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    h1 {
+      color: #756174;
+
+      font-size: clamp(26px, 7vw, 35px);
+      line-height: 1.25;
+
+      margin-bottom: 13px;
+      font-weight: 700;
+    }
+
+    .message {
+      min-height: 25px;
+
+      color: #968693;
+
+      font-size: 14px;
+      line-height: 1.6;
+
+      margin-bottom: 28px;
+
+      transition: opacity 0.2s ease;
+    }
+
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    .button-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+
+      min-height: 50px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+
+      padding: 13px 21px;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* YES button */
+
+    #yesButton {
+      background: #f4a8be;
+      color: white;
+
+      box-shadow: 0 7px 18px rgba(244, 168, 190, 0.3);
+    }
+
+    #yesButton:hover {
+      transform: translateY(-3px) scale(1.04);
+
+      box-shadow:
+        0 10px 23px rgba(244, 168, 190, 0.4);
+    }
+
+    #yesButton:active {
+      transform: scale(0.96);
+    }
+
+
+    /* NO button */
+
+    #noButton {
+      background: #eee9f7;
+      color: #786d7e;
+
+      box-shadow: 0 5px 14px rgba(140, 125, 155, 0.1);
+    }
+
+    #noButton:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    #noButton:active {
+      transform: scale(0.95);
+    }
+
+
+    /* =====================================================
+       SUCCESS STATE
+       ===================================================== */
+
+    .success-title {
+      animation: successPop 0.7s ease;
+    }
+
+    @keyframes successPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+
+      70% {
+        transform: scale(1.08);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+
+    /* =====================================================
+       FLOATING HEARTS
+       ===================================================== */
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+
+      pointer-events: none;
+      z-index: 10;
+
+      animation: rise linear forwards;
+    }
+
+    @keyframes rise {
+      0% {
+        opacity: 0;
+        transform:
+          translateY(0)
+          rotate(0deg)
+          scale(0.7);
+      }
+
+      15% {
+        opacity: 0.7;
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translateY(-110vh)
+          rotate(25deg)
+          scale(1.1);
+      }
+    }
+
+
+    /* =====================================================
+       CONFETTI
+       ===================================================== */
+
+    .confetti {
+      position: fixed;
+      top: -20px;
+
+      pointer-events: none;
+      z-index: 20;
+
+      animation: fall 2.5s ease-out forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translateY(110vh)
+          translateX(var(--move))
+          rotate(720deg);
+      }
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 480px) {
+
+      .card {
+        padding: 36px 22px 31px;
+        border-radius: 27px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .message {
+        font-size: 13px;
+      }
+
+      button {
+        padding: 12px 18px;
+        font-size: 13px;
+      }
+    }
+
+
+    /* Mengurangi animasi jika perangkat meminta
+       reduced motion */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       BACKGROUND DECORATION
+       ===================================================== -->
+
+  <div class="background" aria-hidden="true">
+    <span class="decoration d1">♡</span>
+    <span class="decoration d2">✦</span>
+    <span class="decoration d3">☁︎</span>
+    <span class="decoration d4">♡</span>
+    <span class="decoration d5">✧</span>
+    <span class="decoration d6">⋆</span>
+  </div>
+
+
+  <!-- =====================================================
+       MAIN CARD
+       ===================================================== -->
+
+  <main class="card" id="card">
+
+    <div class="top-heart">♡</div>
+
+    <!-- Teks utama -->
+    <h1 id="title">
+      Will You Be My Brother?
+    </h1>
+
+    <!-- Pesan yang berubah ketika NO ditekan -->
+    <p class="message" id="message">
+      👉👈
+    </p>
+
+    <!-- Tombol -->
+    <div class="button-area">
+
+      <button id="yesButton">
+        YES! 💗
+      </button>
+
+      <button id="noButton">
+        NO… 🥺
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <script>
+    /* =====================================================
+       JAVASCRIPT
+       ===================================================== */
+
+    const card = document.getElementById("card");
+    const title = document.getElementById("title");
+    const message = document.getElementById("message");
+
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+
+
+    /* =====================================================
+       VARIASI PESAN UNTUK TOMBOL NO
+       ===================================================== */
+
+    const noMessages = [
+      "Are you sure? 🥺",
+      "Think again…",
+      "Pleaseee 👉👈",
+      "One more chance? 🥹"
+    ];
+
+    let messageIndex = 0;
+
+
+    /* =====================================================
+       TOMBOL NO
+       ===================================================== */
+
+    noButton.addEventListener("click", () => {
+
+      // Mengganti teks pesan
+      message.style.opacity = "0";
+
+      setTimeout(() => {
+        message.textContent =
+          noMessages[messageIndex];
+
+        message.style.opacity = "1";
+
+        messageIndex++;
+
+        if (messageIndex >= noMessages.length) {
+          messageIndex = 0;
+        }
+      }, 120);
+
+
+      // Membuat tombol berpindah
+      moveNoButton();
+    });
+
+
+    /* =====================================================
+       MEMINDAHKAN TOMBOL NO SECARA RANDOM
+       ===================================================== */
+
+    function moveNoButton() {
+
+      // Ubah menjadi fixed agar bebas bergerak di layar
+      noButton.style.position = "fixed";
+
+      const padding = 20;
+
+      const buttonWidth =
+        noButton.offsetWidth;
+
+      const buttonHeight =
+        noButton.offsetHeight;
+
+      // Batas posisi agar tidak keluar layar
+      const maxX =
+        window.innerWidth -
+        buttonWidth -
+        padding;
+
+      const maxY =
+        window.innerHeight -
+        buttonHeight -
+        padding;
+
+      const randomX =
+        Math.max(
+          padding,
+          Math.random() * maxX
+        );
+
+      const randomY =
+        Math.max(
+          padding,
+          Math.random() * maxY
+        );
+
+
+      // Animasi saat berpindah
+      noButton.animate(
+        [
+          {
+            transform:
+              "scale(0.75) rotate(-8deg)",
+            opacity: 0.4
+          },
+          {
+            transform:
+              "scale(1.08) rotate(6deg)",
+            opacity: 1
+          },
+          {
+            transform:
+              "scale(1) rotate(0deg)",
+            opacity: 1
+          }
+        ],
+        {
+          duration: 420,
+          easing: "ease-out"
+        }
+      );
+
+
+      noButton.style.left =
+        `${randomX}px`;
+
+      noButton.style.top =
+        `${randomY}px`;
+    }
+
+
+    /* =====================================================
+       TOMBOL YES
+       ===================================================== */
+
+    yesButton.addEventListener("click", () => {
+
+      // Ubah isi card
+      title.textContent =
+        "YAYYY!! 🥹💗";
+
+      message.textContent =
+        "I have a brother now hehe ♡";
+
+
+      // Animasi judul
+      title.classList.add("success-title");
+
+
+      // Sembunyikan tombol
+      yesButton.style.display = "none";
+      noButton.style.display = "none";
+
+
+      // Jalankan efek perayaan
+      createConfetti();
+      createHeartBurst();
+    });
+
+
+    /* =====================================================
+       CONFETTI
+       ===================================================== */
+
+    function createConfetti() {
+
+      const symbols = [
+        "♡",
+        "♥",
+        "✦",
+        "✧",
+        "⋆"
+      ];
+
+      for (let i = 0; i < 45; i++) {
+
+        const confetti =
+          document.createElement("span");
+
+        confetti.classList.add("confetti");
+
+        // Random simbol
+        confetti.textContent =
+          symbols[
+            Math.floor(
+              Math.random() * symbols.length
+            )
+          ];
+
+        // Random posisi
+        confetti.style.left =
+          `${Math.random() * 100}vw`;
+
+        // Random ukuran
+        confetti.style.fontSize =
+          `${Math.random() * 9 + 8}px`;
+
+        // Random arah
+        confetti.style.setProperty(
+          "--move",
+          `${(Math.random() - 0.5) * 300}px`
+        );
+
+        // Random durasi
+        confetti.style.animationDuration =
+          `${Math.random() * 1.3 + 1.8}s`;
+
+        document.body.appendChild(confetti);
+
+        // Hapus setelah animasi
+        setTimeout(() => {
+          confetti.remove();
+        }, 3500);
+      }
+    }
+
+
+    /* =====================================================
+       HEART BURST
+       ===================================================== */
+
+    function createHeartBurst() {
+
+      const hearts = [
+        "💗",
+        "♡",
+        "♥",
+        "💖",
+        "✦",
+        "✨"
+      ];
+
+      for (let i = 0; i < 20; i++) {
+
+        const heart =
+          document.createElement("span");
+
+        heart.classList.add("floating-heart");
+
+        heart.textContent =
+          hearts[
+            Math.floor(
+              Math.random() * hearts.length
+            )
+          ];
+
+        heart.style.left =
+          `${Math.random() * 100}vw`;
+
+        heart.style.fontSize =
+          `${Math.random() * 13 + 12}px`;
+
+        heart.style.animationDuration =
+          `${Math.random() * 2 + 3}s`;
+
+        heart.style.animationDelay =
+          `${Math.random() * 0.7}s`;
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5500);
+      }
+    }
+
+
+    /* =====================================================
+       BACKGROUND HEARTS / SPARKLES
+       ===================================================== */
+
+    function createBackgroundDecoration() {
+
+      const heart =
+        document.createElement("span");
+
+      heart.classList.add("floating-heart");
+
+      heart.textContent =
+        Math.random() > 0.5
+          ? "♡"
+          : "✦";
+
+      heart.style.left =
+        `${Math.random() * 100}vw`;
+
+      heart.style.fontSize =
+        `${Math.random() * 8 + 9}px`;
+
+      heart.style.animationDuration =
+        `${Math.random() * 5 + 6}s`;
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 12000);
+    }
+
+
+    // Background decoration muncul perlahan
+    setInterval(
+      createBackgroundDecoration,
+      1800
+    );
+
+  </script>
+
+</body>
+</html>
+```
