@@ -1,453 +1,798 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Responsive untuk HP -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Brother? ♡</title>
 
-  <title>Will You Be My Brother? 💗</title>
+  <!-- Cute rounded font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* =====================================================
        BASIC RESET
-       ===================================================== */
-
+    ===================================================== */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       min-height: 100vh;
-      overflow: hidden;
-
-      font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
-
-      /* Soft pastel background */
+      font-family: "Nunito", sans-serif;
+      color: #6d5269;
       background:
-        radial-gradient(circle at 15% 20%, #ffffff 0 3%, transparent 18%),
-        radial-gradient(circle at 85% 80%, #eee8ff 0 3%, transparent 20%),
-        linear-gradient(135deg, #fff3f7, #fffaf2, #f5f0ff);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #685b67;
+        radial-gradient(circle at 10% 15%, rgba(255,255,255,.9) 0 5%, transparent 18%),
+        radial-gradient(circle at 90% 20%, rgba(221,210,255,.65), transparent 25%),
+        radial-gradient(circle at 20% 90%, rgba(255,205,222,.65), transparent 28%),
+        linear-gradient(135deg, #ffdce9, #f5e4ff 48%, #dff1ff);
       position: relative;
     }
 
-
     /* =====================================================
-       FLOATING BACKGROUND DECORATIONS
-       ===================================================== */
-
+       DECORATIVE BACKGROUND
+    ===================================================== */
     .background {
       position: fixed;
       inset: 0;
       overflow: hidden;
       pointer-events: none;
+      z-index: 0;
     }
 
-    .decoration {
+    .bubble {
       position: absolute;
-      opacity: 0.6;
-      user-select: none;
-
-      animation: floating 5s ease-in-out infinite;
+      border-radius: 50%;
+      background: rgba(255,255,255,.32);
+      box-shadow: 0 0 20px rgba(255,255,255,.45);
+      animation: floatBubble 7s ease-in-out infinite;
     }
 
-    .d1 {
-      top: 12%;
-      left: 10%;
-      font-size: 24px;
-    }
-
-    .d2 {
+    .bubble:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 4%;
       top: 18%;
-      right: 12%;
-      font-size: 18px;
+    }
+
+    .bubble:nth-child(2) {
+      width: 45px;
+      height: 45px;
+      right: 7%;
+      top: 42%;
       animation-delay: 1s;
     }
 
-    .d3 {
-      bottom: 18%;
-      left: 9%;
-      font-size: 22px;
+    .bubble:nth-child(3) {
+      width: 65px;
+      height: 65px;
+      right: 15%;
+      bottom: 8%;
       animation-delay: 2s;
     }
 
-    .d4 {
+    .bubble:nth-child(4) {
+      width: 30px;
+      height: 30px;
+      left: 17%;
       bottom: 12%;
-      right: 13%;
-      font-size: 26px;
-      animation-delay: 0.7s;
+      animation-delay: 3s;
     }
 
-    .d5 {
-      top: 48%;
+    @keyframes floatBubble {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-25px) scale(1.08);
+      }
+    }
+
+    .floating {
+      position: absolute;
+      user-select: none;
+      animation: floatAround 5s ease-in-out infinite;
+      filter: drop-shadow(0 4px 5px rgba(160, 110, 150, .12));
+    }
+
+    .floating:nth-child(5) {
+      left: 6%;
+      top: 7%;
+      font-size: 30px;
+    }
+
+    .floating:nth-child(6) {
+      right: 8%;
+      top: 8%;
+      font-size: 25px;
+      animation-delay: .7s;
+    }
+
+    .floating:nth-child(7) {
       left: 4%;
-      font-size: 14px;
+      bottom: 25%;
+      font-size: 27px;
+      animation-delay: 1.2s;
+    }
+
+    .floating:nth-child(8) {
+      right: 4%;
+      bottom: 18%;
+      font-size: 32px;
+      animation-delay: 2s;
+    }
+
+    .floating:nth-child(9) {
+      left: 18%;
+      top: 40%;
+      font-size: 19px;
       animation-delay: 1.5s;
     }
 
-    .d6 {
-      top: 55%;
-      right: 5%;
-      font-size: 15px;
-      animation-delay: 2.5s;
+    .floating:nth-child(10) {
+      right: 17%;
+      top: 34%;
+      font-size: 20px;
+      animation-delay: 2.4s;
     }
 
-    @keyframes floating {
+    .floating:nth-child(11) {
+      left: 10%;
+      bottom: 7%;
+      font-size: 22px;
+      animation-delay: 1.8s;
+    }
+
+    .floating:nth-child(12) {
+      right: 12%;
+      bottom: 7%;
+      font-size: 23px;
+      animation-delay: .5s;
+    }
+
+    @keyframes floatAround {
       0%, 100% {
-        transform: translateY(0) rotate(-4deg);
+        transform: translateY(0) rotate(-5deg);
       }
-
       50% {
-        transform: translateY(-12px) rotate(5deg);
+        transform: translateY(-18px) rotate(8deg);
       }
     }
-
 
     /* =====================================================
-       MAIN CARD
-       ===================================================== */
-
-    .card {
+       MAIN PAGE
+    ===================================================== */
+    .page {
       position: relative;
       z-index: 2;
-
-      width: min(90%, 420px);
-
-      padding: 42px 28px 35px;
-
-      text-align: center;
-
-      background: rgba(255, 255, 255, 0.88);
-
-      border: 1px solid rgba(239, 182, 202, 0.4);
-      border-radius: 30px;
-
-      box-shadow:
-        0 20px 55px rgba(160, 120, 150, 0.14),
-        0 5px 20px rgba(160, 120, 150, 0.07);
-
-      animation: cardAppear 0.9s ease-out;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 35px 16px;
     }
-
-    @keyframes cardAppear {
-      from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.96);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
 
     /* =====================================================
-       CARD CONTENT
-       ===================================================== */
-
-    .top-heart {
-      font-size: 28px;
-      margin-bottom: 15px;
-
-      animation: heartbeat 1.8s ease-in-out infinite;
+       SCRAPBOOK CARD
+    ===================================================== */
+    .card {
+      position: relative;
+      width: min(900px, 88vw);
+      min-height: 78vh;
+      padding: 65px 35px 45px;
+      border-radius: 42px;
+      background:
+        linear-gradient(rgba(255,255,255,.93), rgba(255,248,252,.94)),
+        #fff;
+      border: 3px solid rgba(255,255,255,.95);
+      box-shadow:
+        0 25px 70px rgba(159, 108, 155, .2),
+        0 0 45px rgba(255,255,255,.7),
+        inset 0 0 35px rgba(255,220,238,.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: cardEntrance 1s cubic-bezier(.2,.8,.2,1);
+      overflow: visible;
     }
 
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(35px) scale(.92) rotate(-1deg);
       }
-
-      50% {
-        transform: scale(1.15);
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
       }
     }
 
-    h1 {
-      color: #756174;
-
-      font-size: clamp(26px, 7vw, 35px);
-      line-height: 1.25;
-
-      margin-bottom: 13px;
-      font-weight: 700;
+    /* little scrapbook tape */
+    .tape {
+      position: absolute;
+      width: 125px;
+      height: 34px;
+      background: rgba(255, 222, 235, .78);
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(100,70,90,.08);
+      z-index: 5;
     }
 
-    .message {
-      min-height: 25px;
+    .tape.one {
+      top: -14px;
+      left: 15%;
+      transform: rotate(-7deg);
+    }
 
-      color: #968693;
+    .tape.two {
+      top: -10px;
+      right: 13%;
+      transform: rotate(8deg);
+      background: rgba(225, 215, 255, .78);
+    }
 
+    .tape.three {
+      bottom: -12px;
+      left: 12%;
+      transform: rotate(5deg);
+      background: rgba(211, 238, 255, .8);
+    }
+
+    /* =====================================================
+       STICKERS
+    ===================================================== */
+    .sticker {
+      position: absolute;
+      z-index: 6;
+      padding: 9px 15px;
+      border-radius: 15px;
+      background: white;
+      box-shadow: 0 8px 20px rgba(130,90,130,.13);
+      font-weight: 900;
       font-size: 14px;
-      line-height: 1.6;
-
-      margin-bottom: 28px;
-
-      transition: opacity 0.2s ease;
+      animation: stickerFloat 4s ease-in-out infinite;
+      white-space: nowrap;
     }
 
+    .sticker.one {
+      top: 14%;
+      left: -42px;
+      transform: rotate(-10deg);
+      background: #ffe2ed;
+    }
+
+    .sticker.two {
+      top: 28%;
+      right: -48px;
+      transform: rotate(8deg);
+      background: #e7ddff;
+      animation-delay: .8s;
+    }
+
+    .sticker.three {
+      bottom: 20%;
+      left: -45px;
+      transform: rotate(7deg);
+      background: #e1f4ff;
+      animation-delay: 1.4s;
+    }
+
+    .sticker.four {
+      bottom: 13%;
+      right: -40px;
+      transform: rotate(-8deg);
+      background: #fff0c9;
+      animation-delay: 2s;
+    }
+
+    @keyframes stickerFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(var(--rotation, 0deg));
+      }
+      50% {
+        transform: translateY(-7px) rotate(var(--rotation, 0deg));
+      }
+    }
+
+    /* =====================================================
+       QUESTION CONTENT
+    ===================================================== */
+    .tiny-title {
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(18px, 3vw, 25px);
+      font-weight: 700;
+      color: #a4779c;
+      margin-bottom: 12px;
+      animation: tinyBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes tinyBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .emoji-point {
+      font-size: 34px;
+      margin-bottom: 5px;
+      animation: wiggle 2s infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0); }
+      25% { transform: rotate(-8deg); }
+      75% { transform: rotate(8deg); }
+    }
+
+    .main-title {
+      position: relative;
+      max-width: 850px;
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(52px, 9vw, 105px);
+      line-height: .92;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: #d86f9c;
+      text-shadow:
+        3px 4px 0 #fff,
+        6px 7px 0 rgba(232, 178, 207, .35);
+      animation: titleFloat 3s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes titleFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(-.5deg);
+      }
+      50% {
+        transform: translateY(-7px) rotate(.5deg);
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      color: #d7a9ff;
+      font-size: 25px;
+      animation: sparkle 1.7s ease-in-out infinite;
+    }
+
+    .sparkle.s1 {
+      top: -20px;
+      left: 3%;
+    }
+
+    .sparkle.s2 {
+      top: 25%;
+      right: 1%;
+      animation-delay: .5s;
+    }
+
+    .sparkle.s3 {
+      bottom: -20px;
+      left: 17%;
+      animation-delay: .9s;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: .35;
+        transform: scale(.7) rotate(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.25) rotate(20deg);
+      }
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin-top: 28px;
+      font-size: clamp(17px, 3vw, 22px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #80677d;
+    }
 
     /* =====================================================
        BUTTONS
-       ===================================================== */
-
-    .button-area {
+    ===================================================== */
+    .buttons {
+      position: relative;
+      width: 100%;
+      margin-top: 32px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 12px;
-
-      min-height: 50px;
+      justify-content: center;
+      gap: 20px;
+      min-height: 75px;
     }
 
     button {
       border: none;
-      border-radius: 999px;
-
-      padding: 13px 21px;
-
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: bold;
-
       cursor: pointer;
-
+      font-family: "Nunito", sans-serif;
+      font-weight: 900;
+      font-size: 19px;
+      padding: 16px 28px;
+      border-radius: 999px;
+      min-width: 155px;
       transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
-
+        transform .2s ease,
+        box-shadow .2s ease,
+        font-size .3s ease;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* YES button */
-
-    #yesButton {
-      background: #f4a8be;
+    .yes-btn {
+      position: relative;
+      z-index: 20;
       color: white;
-
-      box-shadow: 0 7px 18px rgba(244, 168, 190, 0.3);
-    }
-
-    #yesButton:hover {
-      transform: translateY(-3px) scale(1.04);
-
+      background: linear-gradient(135deg, #ec82aa, #d96799);
       box-shadow:
-        0 10px 23px rgba(244, 168, 190, 0.4);
+        0 10px 20px rgba(214, 103, 153, .28),
+        inset 0 2px 0 rgba(255,255,255,.45);
     }
 
-    #yesButton:active {
-      transform: scale(0.96);
+    .yes-btn:hover {
+      transform: scale(1.09) rotate(-2deg);
+      box-shadow: 0 15px 28px rgba(214, 103, 153, .35);
     }
 
-
-    /* NO button */
-
-    #noButton {
-      background: #eee9f7;
-      color: #786d7e;
-
-      box-shadow: 0 5px 14px rgba(140, 125, 155, 0.1);
+    .yes-btn:active {
+      transform: scale(.96);
     }
 
-    #noButton:hover {
-      transform: translateY(-2px) scale(1.03);
-    }
-
-    #noButton:active {
-      transform: scale(0.95);
-    }
-
-
-    /* =====================================================
-       SUCCESS STATE
-       ===================================================== */
-
-    .success-title {
-      animation: successPop 0.7s ease;
-    }
-
-    @keyframes successPop {
-      0% {
-        opacity: 0;
-        transform: scale(0.7);
-      }
-
-      70% {
-        transform: scale(1.08);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-
-    /* =====================================================
-       FLOATING HEARTS
-       ===================================================== */
-
-    .floating-heart {
-      position: fixed;
-      bottom: -30px;
-
-      pointer-events: none;
+    .no-btn {
+      position: relative;
       z-index: 10;
-
-      animation: rise linear forwards;
+      color: #856b82;
+      background: #f1eaff;
+      box-shadow:
+        0 10px 20px rgba(140,110,170,.18),
+        inset 0 2px 0 rgba(255,255,255,.7);
     }
 
-    @keyframes rise {
+    .no-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .small-note {
+      min-height: 30px;
+      margin-top: 18px;
+      color: #a07799;
+      font-size: 16px;
+      font-weight: 800;
+      transition: .3s ease;
+    }
+
+    /* =====================================================
+       LITTLE DOODLES AROUND CARD
+    ===================================================== */
+    .doodle {
+      position: absolute;
+      color: #e49bbb;
+      font-size: 27px;
+      pointer-events: none;
+      animation: doodleFloat 4s ease-in-out infinite;
+    }
+
+    .d1 {
+      left: 8%;
+      top: 11%;
+      transform: rotate(-15deg);
+    }
+
+    .d2 {
+      right: 8%;
+      top: 16%;
+      animation-delay: .8s;
+    }
+
+    .d3 {
+      left: 7%;
+      bottom: 13%;
+      animation-delay: 1.3s;
+    }
+
+    .d4 {
+      right: 7%;
+      bottom: 10%;
+      animation-delay: 2s;
+    }
+
+    @keyframes doodleFloat {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-10px) rotate(8deg); }
+    }
+
+    /* =====================================================
+       YES SUCCESS STATE
+    ===================================================== */
+    .success-title {
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(48px, 10vw, 100px);
+      line-height: .95;
+      color: #d8679a;
+      font-weight: 800;
+      text-shadow: 3px 4px 0 white;
+      animation: successBounce .8s cubic-bezier(.2,1.5,.5,1);
+    }
+
+    @keyframes successBounce {
       0% {
+        transform: scale(.2) rotate(-8deg);
         opacity: 0;
-        transform:
-          translateY(0)
-          rotate(0deg)
-          scale(0.7);
       }
-
-      15% {
-        opacity: 0.7;
+      60% {
+        transform: scale(1.15) rotate(3deg);
       }
+      100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+      }
+    }
 
+    .success-big {
+      margin-top: 18px;
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(27px, 5vw, 46px);
+      font-weight: 800;
+      color: #8060a2;
+    }
+
+    .success-small {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 800;
+      color: #9a7894;
+    }
+
+    /* =====================================================
+       PARTICLES
+    ===================================================== */
+    .particle {
+      position: fixed;
+      z-index: 100;
+      pointer-events: none;
+      font-size: 25px;
+      animation: particleFly 1.7s cubic-bezier(.15,.8,.25,1) forwards;
+    }
+
+    @keyframes particleFly {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(.5) rotate(0);
+      }
       100% {
         opacity: 0;
         transform:
-          translateY(-110vh)
-          rotate(25deg)
-          scale(1.1);
+          translate(var(--x), var(--y))
+          scale(1.4)
+          rotate(var(--r));
       }
     }
-
-
-    /* =====================================================
-       CONFETTI
-       ===================================================== */
 
     .confetti {
       position: fixed;
-      top: -20px;
-
+      z-index: 99;
+      width: 10px;
+      height: 15px;
       pointer-events: none;
-      z-index: 20;
-
-      animation: fall 2.5s ease-out forwards;
+      animation: confettiFall 2.4s ease-out forwards;
     }
 
-    @keyframes fall {
+    @keyframes confettiFall {
       0% {
         opacity: 1;
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(-20px) rotate(0);
       }
-
       100% {
         opacity: 0;
         transform:
-          translateY(110vh)
-          translateX(var(--move))
+          translateY(105vh)
+          translateX(var(--drift))
           rotate(720deg);
       }
     }
 
-
     /* =====================================================
        MOBILE
-       ===================================================== */
-
-    @media (max-width: 480px) {
+    ===================================================== */
+    @media (max-width: 600px) {
+      .page {
+        padding: 25px 12px;
+      }
 
       .card {
-        padding: 36px 22px 31px;
-        border-radius: 27px;
+        width: 92vw;
+        min-height: 82vh;
+        padding: 55px 18px 35px;
+        border-radius: 32px;
       }
 
-      h1 {
-        font-size: 28px;
+      .main-title {
+        font-size: clamp(48px, 14vw, 72px);
+        letter-spacing: -1px;
       }
 
-      .message {
-        font-size: 13px;
+      .subtitle {
+        font-size: 16px;
+        margin-top: 22px;
+      }
+
+      .buttons {
+        flex-direction: row;
+        gap: 10px;
       }
 
       button {
-        padding: 12px 18px;
-        font-size: 13px;
+        min-width: 0;
+        width: 46%;
+        padding: 15px 10px;
+        font-size: 16px;
+      }
+
+      .sticker {
+        font-size: 11px;
+        padding: 7px 10px;
+      }
+
+      .sticker.one {
+        left: -10px;
+        top: 10%;
+      }
+
+      .sticker.two {
+        right: -8px;
+        top: 25%;
+      }
+
+      .sticker.three {
+        left: -8px;
+        bottom: 18%;
+      }
+
+      .sticker.four {
+        right: -8px;
+        bottom: 10%;
+      }
+
+      .tape {
+        width: 90px;
+        height: 28px;
+      }
+
+      .doodle {
+        font-size: 21px;
+      }
+
+      .floating:nth-child(5) {
+        left: 2%;
+      }
+
+      .floating:nth-child(6) {
+        right: 2%;
       }
     }
 
+    @media (max-height: 650px) {
+      .card {
+        min-height: 90vh;
+        padding-top: 40px;
+        padding-bottom: 30px;
+      }
 
-    /* Mengurangi animasi jika perangkat meminta
-       reduced motion */
+      .subtitle {
+        margin-top: 16px;
+      }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
+      .buttons {
+        margin-top: 20px;
       }
     }
-
   </style>
 </head>
-
 
 <body>
 
   <!-- =====================================================
-       BACKGROUND DECORATION
-       ===================================================== -->
+       BACKGROUND DECORATIONS
+  ====================================================== -->
+  <div class="background">
 
-  <div class="background" aria-hidden="true">
-    <span class="decoration d1">♡</span>
-    <span class="decoration d2">✦</span>
-    <span class="decoration d3">☁︎</span>
-    <span class="decoration d4">♡</span>
-    <span class="decoration d5">✧</span>
-    <span class="decoration d6">⋆</span>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="floating">♡</div>
+    <div class="floating">✦</div>
+    <div class="floating">☁️</div>
+    <div class="floating">🎀</div>
+    <div class="floating">✧</div>
+    <div class="floating">♡</div>
+    <div class="floating">✿</div>
+    <div class="floating">★</div>
   </div>
 
 
   <!-- =====================================================
-       MAIN CARD
-       ===================================================== -->
+       MAIN PAGE
+  ====================================================== -->
+  <main class="page">
 
-  <main class="card" id="card">
+    <!-- Decorative doodles around the card -->
+    <div class="doodle d1">♡</div>
+    <div class="doodle d2">✧</div>
+    <div class="doodle d3">♡</div>
+    <div class="doodle d4">✦</div>
 
-    <div class="top-heart">♡</div>
+    <!-- Main scrapbook card -->
+    <section class="card" id="card">
 
-    <!-- Teks utama -->
-    <h1 id="title">
-      Will You Be My Brother?
-    </h1>
+      <!-- Scrapbook tape -->
+      <div class="tape one"></div>
+      <div class="tape two"></div>
+      <div class="tape three"></div>
 
-    <!-- Pesan yang berubah ketika NO ditekan -->
-    <p class="message" id="message">
-      👉👈
-    </p>
+      <!-- Cute stickers -->
+      <div class="sticker one">hehe ♡</div>
+      <div class="sticker two">brother application</div>
+      <div class="sticker three">pls 🥺</div>
+      <div class="sticker four">approved?? ✨</div>
 
-    <!-- Tombol -->
-    <div class="button-area">
+      <!-- Small top text -->
+      <div class="emoji-point">👉👈</div>
 
-      <button id="yesButton">
-        YES! 💗
-      </button>
+      <div class="tiny-title">
+        important question… 👀
+      </div>
 
-      <button id="noButton">
-        NO… 🥺
-      </button>
+      <!-- Main question -->
+      <div id="content">
 
-    </div>
+        <h1 class="main-title" id="mainTitle">
+          Will You Be My Brother?
+
+          <span class="sparkle s1">✦</span>
+          <span class="sparkle s2">✧</span>
+          <span class="sparkle s3">♡</span>
+        </h1>
+
+        <p class="subtitle" id="subtitle">
+          I have something very important to ask you… 👉👈
+        </p>
+
+        <!-- Buttons -->
+        <div class="buttons" id="buttons">
+
+          <button class="yes-btn" id="yesBtn">
+            YES!! 💗
+          </button>
+
+          <button class="no-btn" id="noBtn">
+            NO… 🥺
+          </button>
+
+        </div>
+
+        <div class="small-note" id="smallNote"></div>
+
+      </div>
+
+    </section>
 
   </main>
 
@@ -455,310 +800,441 @@
   <script>
     /* =====================================================
        JAVASCRIPT
-       ===================================================== */
+       Cute interactions + particles + buttons
+    ====================================================== */
 
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
     const card = document.getElementById("card");
-    const title = document.getElementById("title");
-    const message = document.getElementById("message");
+    const mainTitle = document.getElementById("mainTitle");
+    const subtitle = document.getElementById("subtitle");
+    const buttons = document.getElementById("buttons");
+    const smallNote = document.getElementById("smallNote");
 
-    const yesButton = document.getElementById("yesButton");
-    const noButton = document.getElementById("noButton");
+    let noCount = 0;
+    let yesClicked = false;
 
-
-    /* =====================================================
-       VARIASI PESAN UNTUK TOMBOL NO
-       ===================================================== */
-
+    /* Messages for NO button */
     const noMessages = [
       "Are you sure? 🥺",
       "Think again…",
+      "Really?? 😭",
       "Pleaseee 👉👈",
-      "One more chance? 🥹"
+      "Just one chance? 🥹",
+      "I’ll be a good sibling, promise!",
+      "Don’t do this to me 😭💔"
     ];
 
-    let messageIndex = 0;
-
 
     /* =====================================================
-       TOMBOL NO
-       ===================================================== */
+       CREATE A FLOATING PARTICLE
+    ====================================================== */
+    function createParticle(x, y, emoji) {
 
-    noButton.addEventListener("click", () => {
+      const particle = document.createElement("div");
 
-      // Mengganti teks pesan
-      message.style.opacity = "0";
+      particle.className = "particle";
+      particle.textContent = emoji;
 
-      setTimeout(() => {
-        message.textContent =
-          noMessages[messageIndex];
+      particle.style.left = x + "px";
+      particle.style.top = y + "px";
 
-        message.style.opacity = "1";
-
-        messageIndex++;
-
-        if (messageIndex >= noMessages.length) {
-          messageIndex = 0;
-        }
-      }, 120);
-
-
-      // Membuat tombol berpindah
-      moveNoButton();
-    });
-
-
-    /* =====================================================
-       MEMINDAHKAN TOMBOL NO SECARA RANDOM
-       ===================================================== */
-
-    function moveNoButton() {
-
-      // Ubah menjadi fixed agar bebas bergerak di layar
-      noButton.style.position = "fixed";
-
-      const padding = 20;
-
-      const buttonWidth =
-        noButton.offsetWidth;
-
-      const buttonHeight =
-        noButton.offsetHeight;
-
-      // Batas posisi agar tidak keluar layar
-      const maxX =
-        window.innerWidth -
-        buttonWidth -
-        padding;
-
-      const maxY =
-        window.innerHeight -
-        buttonHeight -
-        padding;
-
-      const randomX =
-        Math.max(
-          padding,
-          Math.random() * maxX
-        );
-
-      const randomY =
-        Math.max(
-          padding,
-          Math.random() * maxY
-        );
-
-
-      // Animasi saat berpindah
-      noButton.animate(
-        [
-          {
-            transform:
-              "scale(0.75) rotate(-8deg)",
-            opacity: 0.4
-          },
-          {
-            transform:
-              "scale(1.08) rotate(6deg)",
-            opacity: 1
-          },
-          {
-            transform:
-              "scale(1) rotate(0deg)",
-            opacity: 1
-          }
-        ],
-        {
-          duration: 420,
-          easing: "ease-out"
-        }
+      particle.style.setProperty(
+        "--x",
+        `${Math.random() * 300 - 150}px`
       );
 
+      particle.style.setProperty(
+        "--y",
+        `${Math.random() * 300 - 200}px`
+      );
 
-      noButton.style.left =
-        `${randomX}px`;
+      particle.style.setProperty(
+        "--r",
+        `${Math.random() * 500 - 250}deg`
+      );
 
-      noButton.style.top =
-        `${randomY}px`;
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 1800);
     }
 
 
     /* =====================================================
-       TOMBOL YES
-       ===================================================== */
+       YES BUTTON PARTICLES
+    ====================================================== */
+    function createYesExplosion() {
 
-    yesButton.addEventListener("click", () => {
-
-      // Ubah isi card
-      title.textContent =
-        "YAYYY!! 🥹💗";
-
-      message.textContent =
-        "I have a brother now hehe ♡";
-
-
-      // Animasi judul
-      title.classList.add("success-title");
-
-
-      // Sembunyikan tombol
-      yesButton.style.display = "none";
-      noButton.style.display = "none";
-
-
-      // Jalankan efek perayaan
-      createConfetti();
-      createHeartBurst();
-    });
-
-
-    /* =====================================================
-       CONFETTI
-       ===================================================== */
-
-    function createConfetti() {
-
-      const symbols = [
+      const emojis = [
+        "💗",
+        "💕",
+        "💖",
         "♡",
-        "♥",
-        "✦",
-        "✧",
-        "⋆"
+        "✨",
+        "⭐",
+        "🌸",
+        "🎀",
+        "🥹"
       ];
 
-      for (let i = 0; i < 45; i++) {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
-        const confetti =
-          document.createElement("span");
+      for (let i = 0; i < 60; i++) {
 
-        confetti.classList.add("confetti");
-
-        // Random simbol
-        confetti.textContent =
-          symbols[
-            Math.floor(
-              Math.random() * symbols.length
-            )
-          ];
-
-        // Random posisi
-        confetti.style.left =
-          `${Math.random() * 100}vw`;
-
-        // Random ukuran
-        confetti.style.fontSize =
-          `${Math.random() * 9 + 8}px`;
-
-        // Random arah
-        confetti.style.setProperty(
-          "--move",
-          `${(Math.random() - 0.5) * 300}px`
-        );
-
-        // Random durasi
-        confetti.style.animationDuration =
-          `${Math.random() * 1.3 + 1.8}s`;
-
-        document.body.appendChild(confetti);
-
-        // Hapus setelah animasi
         setTimeout(() => {
-          confetti.remove();
-        }, 3500);
+
+          const emoji =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+          createParticle(
+            centerX + (Math.random() * 100 - 50),
+            centerY + (Math.random() * 100 - 50),
+            emoji
+          );
+
+        }, i * 25);
       }
     }
 
 
     /* =====================================================
-       HEART BURST
-       ===================================================== */
+       CONFETTI
+    ====================================================== */
+    function createConfetti() {
 
-    function createHeartBurst() {
-
-      const hearts = [
-        "💗",
+      const confettiSymbols = [
         "♡",
-        "♥",
-        "💖",
         "✦",
-        "✨"
+        "✧",
+        "•",
+        "★"
       ];
 
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 80; i++) {
 
-        const heart =
-          document.createElement("span");
+        const confetti = document.createElement("div");
 
-        heart.classList.add("floating-heart");
+        confetti.className = "confetti";
+
+        confetti.textContent =
+          confettiSymbols[
+            Math.floor(Math.random() * confettiSymbols.length)
+          ];
+
+        confetti.style.left =
+          Math.random() * 100 + "vw";
+
+        confetti.style.top =
+          "-30px";
+
+        confetti.style.fontSize =
+          (10 + Math.random() * 18) + "px";
+
+        confetti.style.setProperty(
+          "--drift",
+          `${Math.random() * 300 - 150}px`
+        );
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 2600);
+      }
+    }
+
+
+    /* =====================================================
+       FLOATING HEARTS AFTER YES
+    ====================================================== */
+    function floatingHeartRain() {
+
+      const heartEmojis = [
+        "💗",
+        "💕",
+        "💖",
+        "♡",
+        "💞"
+      ];
+
+      let count = 0;
+
+      const interval = setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "particle";
 
         heart.textContent =
-          hearts[
-            Math.floor(
-              Math.random() * hearts.length
-            )
+          heartEmojis[
+            Math.floor(Math.random() * heartEmojis.length)
           ];
 
         heart.style.left =
-          `${Math.random() * 100}vw`;
+          Math.random() * 100 + "vw";
 
-        heart.style.fontSize =
-          `${Math.random() * 13 + 12}px`;
+        heart.style.top =
+          (60 + Math.random() * 35) + "vh";
 
-        heart.style.animationDuration =
-          `${Math.random() * 2 + 3}s`;
+        heart.style.setProperty(
+          "--x",
+          `${Math.random() * 160 - 80}px`
+        );
 
-        heart.style.animationDelay =
-          `${Math.random() * 0.7}s`;
+        heart.style.setProperty(
+          "--y",
+          `${-250 - Math.random() * 250}px`
+        );
+
+        heart.style.setProperty(
+          "--r",
+          `${Math.random() * 300 - 150}deg`
+        );
 
         document.body.appendChild(heart);
 
         setTimeout(() => {
           heart.remove();
-        }, 5500);
-      }
+        }, 1800);
+
+        count++;
+
+        if (count > 28) {
+          clearInterval(interval);
+        }
+
+      }, 120);
     }
 
 
     /* =====================================================
-       BACKGROUND HEARTS / SPARKLES
-       ===================================================== */
+       YES BUTTON
+    ====================================================== */
+    yesBtn.addEventListener("click", () => {
 
-    function createBackgroundDecoration() {
+      if (yesClicked) return;
 
-      const heart =
-        document.createElement("span");
+      yesClicked = true;
 
-      heart.classList.add("floating-heart");
+      /* Change the main content */
+      mainTitle.className = "success-title";
+      mainTitle.innerHTML = "YAYYYYY!!! 🥹💗";
 
-      heart.textContent =
-        Math.random() > 0.5
-          ? "♡"
-          : "✦";
+      subtitle.className = "success-big";
+      subtitle.textContent = "I HAVE A BROTHER NOW!!";
 
-      heart.style.left =
-        `${Math.random() * 100}vw`;
+      smallNote.className = "success-small";
+      smallNote.textContent =
+        "thank you for saying yes hehe ♡";
 
-      heart.style.fontSize =
-        `${Math.random() * 8 + 9}px`;
+      /* Remove the NO button */
+      noBtn.style.display = "none";
 
-      heart.style.animationDuration =
-        `${Math.random() * 5 + 6}s`;
+      /* Keep YES button cute */
+      yesBtn.style.display = "none";
 
-      document.body.appendChild(heart);
+      /* Bounce the card */
+      card.animate(
+        [
+          { transform: "scale(1)" },
+          { transform: "scale(1.04) rotate(-1deg)" },
+          { transform: "scale(.98) rotate(1deg)" },
+          { transform: "scale(1.02)" },
+          { transform: "scale(1)" }
+        ],
+        {
+          duration: 900,
+          easing: "cubic-bezier(.2,1.4,.4,1)"
+        }
+      );
 
-      setTimeout(() => {
-        heart.remove();
-      }, 12000);
+      /* Explosion */
+      createYesExplosion();
+
+      /* Confetti */
+      createConfetti();
+
+      /* Heart rain */
+      floatingHeartRain();
+
+      /* Extra repeated sparkle bursts */
+      setTimeout(createYesExplosion, 500);
+      setTimeout(createYesExplosion, 1000);
+    });
+
+
+    /* =====================================================
+       NO BUTTON
+    ====================================================== */
+    noBtn.addEventListener("click", () => {
+
+      if (yesClicked) return;
+
+      noCount++;
+
+      /* Change message */
+      smallNote.textContent =
+        noMessages[
+          (noCount - 1) % noMessages.length
+        ];
+
+      /* Make NO progressively smaller */
+      const noScale =
+        Math.max(0.65, 1 - noCount * 0.06);
+
+      noBtn.style.transform =
+        `scale(${noScale})`;
+
+      /* Make YES slightly bigger */
+      const yesScale =
+        Math.min(1.2, 1 + noCount * 0.035);
+
+      yesBtn.style.transform =
+        `scale(${yesScale})`;
+
+      /* Create playful sparkles around button */
+      const rect = noBtn.getBoundingClientRect();
+
+      for (let i = 0; i < 5; i++) {
+
+        createParticle(
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+          ["🥺", "♡", "✨", "💭"][
+            Math.floor(Math.random() * 4)
+          ]
+        );
+      }
+
+      /* Move button after a few attempts */
+      moveNoButton();
+    });
+
+
+    /* =====================================================
+       MOVE NO BUTTON
+       ====================================================== */
+    function moveNoButton() {
+
+      const cardRect =
+        card.getBoundingClientRect();
+
+      const buttonRect =
+        noBtn.getBoundingClientRect();
+
+      const maxX =
+        Math.max(
+          20,
+          cardRect.width - buttonRect.width - 35
+        );
+
+      const maxY = 90;
+
+      const randomX =
+        Math.random() * maxX - maxX / 2;
+
+      const randomY =
+        Math.random() * maxY - maxY / 2;
+
+      /*
+        On mobile, keep the button reasonably close
+        so it never flies outside the screen.
+      */
+      const safeX =
+        Math.max(
+          -90,
+          Math.min(90, randomX)
+        );
+
+      const safeY =
+        Math.max(
+          -45,
+          Math.min(45, randomY)
+        );
+
+      noBtn.animate(
+        [
+          {
+            transform:
+              `translate(0,0) scale(${Math.max(.65, 1 - noCount * .06)}) rotate(0deg)`
+          },
+          {
+            transform:
+              `translate(${safeX}px, ${safeY}px) scale(${Math.max(.65, 1 - noCount * .06)}) rotate(${Math.random() * 12 - 6}deg)`
+          }
+        ],
+        {
+          duration: 450,
+          easing: "cubic-bezier(.2,.8,.2,1)",
+          fill: "forwards"
+        }
+      );
     }
 
 
-    // Background decoration muncul perlahan
-    setInterval(
-      createBackgroundDecoration,
-      1800
-    );
+    /* =====================================================
+       RANDOM LITTLE BACKGROUND SPARKLES
+    ====================================================== */
+    setInterval(() => {
+
+      if (yesClicked) return;
+
+      const sparkle = document.createElement("div");
+
+      sparkle.textContent =
+        Math.random() > .5 ? "✦" : "♡";
+
+      sparkle.style.position = "fixed";
+      sparkle.style.left =
+        Math.random() * 100 + "vw";
+
+      sparkle.style.top =
+        Math.random() * 100 + "vh";
+
+      sparkle.style.color =
+        Math.random() > .5
+          ? "#d99bc0"
+          : "#bda5e8";
+
+      sparkle.style.fontSize =
+        (10 + Math.random() * 12) + "px";
+
+      sparkle.style.pointerEvents = "none";
+      sparkle.style.zIndex = "1";
+
+      document.body.appendChild(sparkle);
+
+      sparkle.animate(
+        [
+          {
+            opacity: 0,
+            transform: "scale(.4) rotate(0)"
+          },
+          {
+            opacity: 1,
+            transform: "scale(1.2) rotate(25deg)"
+          },
+          {
+            opacity: 0,
+            transform: "scale(.4) rotate(50deg)"
+          }
+        ],
+        {
+          duration: 1600,
+          easing: "ease-in-out"
+        }
+      );
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 1600);
+
+    }, 700);
 
   </script>
 
 </body>
 </html>
-```
